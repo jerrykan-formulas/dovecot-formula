@@ -2,6 +2,21 @@
 
 {%- set virtual_users = salt['pillar.get']('dovecot:virtual_users', {}) -%}
 
+virtual-users-vmail-user:
+  user.present:
+    - name: {{ dovecot.virtual_user_uid }}
+    - home: {{ dovecot.virtual_user_home }}
+    - shell: /bin/false
+    - createhome: False
+    - system: True
+
+  file.directory:
+    - name: {{ dovecot.virtual_user_home }}
+    - user: {{ dovecot.virtual_user_uid }}
+    - group: {{ dovecot.virtual_user_uid }}
+    - require:
+      - user: virtual-users-vmail-user
+
 virtual-users-db-dir:
   file.directory:
     - name: {{ dovecot.virtual_user_db_dir }}

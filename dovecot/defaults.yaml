@@ -8,3 +8,5 @@ dovecot:
 
   virtual_user_db_dir: /var/lib/dovecot/authdb
   virtual_user_db_file: authdb.sqlite3
+  virtual_user_uid: vmail
+  virtual_user_home: /home/vmail

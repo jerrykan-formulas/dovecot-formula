@@ -5,3 +5,6 @@ dovecot:
 
   config_conf_dir: /etc/dovecot
   config_confd_dir: /etc/dovecot/conf.d
+
+  virtual_user_db_dir: /var/lib/dovecot/authdb
+  virtual_user_db_file: authdb.sqlite3

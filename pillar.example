@@ -39,3 +39,10 @@ dovecot:
       default_pass_scheme = SHA512-CRYPT
       password_query = SELECT userid AS user, pw AS password \
         FROM users WHERE userid = '%u' AND active = 'Y'
+
+  virtual_users:
+    # domains which contain virtual users
+    example.com:
+      # virtual user username/password key/values
+      user1: {{SSHA}}user1_password_hash
+      user2: {{SSHA}}user2_password_hash
